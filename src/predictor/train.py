@@ -132,7 +132,7 @@ def bin_cls(y_reg, c1, c2=None):
     y_cls = np.array(y_cls)
     return y_cls
 
-def bin_cls_evl(y_true, y_pred, beta=2, print_result=True):  # 二分类器评价
+def bin_cls_evl(y_true, y_pred, beta=2, print_result=True):  # Evaluate the binary classifier.
     """
     Performance metrics for binary classification task
     metrics: accuracy(A), precision(P), recall(R), roc_auc(AUC), fbeta_score(Fbeta)

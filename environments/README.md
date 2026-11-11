@@ -1,11 +1,11 @@
-# 环境
+# Environments
 
-## 特征提取与分类
+## Feature extraction and classification
 
-依赖列表：
+Dependency lists:
 
-- requirements-ml.in：特征、分类器和预训练模型接口。
-- requirements-analysis.in：统计、可视化、Materials Project 查询及晶体分析工具。
+- requirements-ml.in: feature extraction, classifiers, and pretrained-model interfaces.
+- requirements-analysis.in: statistics, visualization, Materials Project queries, and crystal-analysis tools.
 
 ```bash
 python -m pip install -r environments/requirements-ml.in
@@ -13,13 +13,13 @@ python -m pip install -r environments/requirements-analysis.in
 python -m pip install -e . --no-deps
 ```
 
-ML 依赖列表不锁定版本。ALIGNN、DGL、JARVIS、PyTorch、matminer 和 pymatgen 应使用相互兼容的版本；读取既有分类器时，还需与其 LightGBM/scikit-learn 序列化格式兼容。
+The ML dependencies are not version-locked. Use mutually compatible versions of ALIGNN, DGL, JARVIS, PyTorch, matminer, and pymatgen. Existing classifier files also require compatible LightGBM/scikit-learn serialization formats.
 
 ## CDVAE
 
-CDVAE 使用独立环境及其完整源码树。可参考 cdvaecpu 的主要版本：
+CDVAE uses a separate environment and its full source tree. Key versions in the cdvaecpu reference environment are:
 
-| 组件 | 参考版本 |
+| Component | Reference version |
 |---|---|
 | Python | 3.9.18 |
 | PyTorch | 1.8.1 |
@@ -28,4 +28,4 @@ CDVAE 使用独立环境及其完整源码树。可参考 cdvaecpu 的主要版�
 | hydra-core | 1.1.0 |
 | omegaconf | 2.1.2 |
 
-采样接口依赖 CDVAE 的 scripts/eval_utils.py、模型配置及 GemNet 配套文件，使用方式见 [integrations/cdvae/README.md](../integrations/cdvae/README.md)。
+The sampling interface depends on CDVAE's scripts/eval_utils.py, model configuration, and GemNet companion files. See [integrations/cdvae/README.md](../integrations/cdvae/README.md).

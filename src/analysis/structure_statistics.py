@@ -63,11 +63,11 @@ def count_target_and_metal_cations(folder="."):
                 structure = Structure.from_file(os.path.join(folder, file))
                 composition = structure.composition
 
-                # 统计目标元素种类数量
+                # Count distinct target elements.
                 target_elements = [el for el in composition.elements if el.symbol in TARGET_ELEMENTS]
                 num_target_elements = len(target_elements)
 
-                # 统计金属阳离子种类数量（根据金属性质判断）
+                # Count distinct metal elements using the metallic-element classification.
                 metal_cations = [el for el in composition.elements if Element(el).is_metal]
                 num_metal_cations = len(metal_cations)
 
@@ -79,7 +79,7 @@ def count_target_and_metal_cations(folder="."):
             except Exception as e:
                 print(f"Error processing {file}: {e}")
 
-    # 打印结果
+    # Print results.
     print(f"{'File':<30}{'Target Elements':<20}{'Metal Cations':<20}")
     print("-" * 70)
     for res in results:
@@ -102,23 +102,23 @@ def summarize_cif_statistics(folder="."):
     for file in os.listdir(folder):
         if file.endswith(".cif"):
             try:
-                # 读取结构文件
+                # Read the structure file.
                 structure = Structure.from_file(os.path.join(folder, file))
                 composition = structure.composition
 
-                # 收集目标元素
+                # Collect target elements.
                 for el in composition.elements:
                     if el.symbol in TARGET_ELEMENTS:
                         all_target_elements.add(el.symbol)
 
-                # 收集金属阳离子
+                # Collect metal elements.
                 for el in composition.elements:
                     if Element(el).is_metal:
                         all_metal_cations.add(el.symbol)
             except Exception as e:
                 print(f"Error processing {file}: {e}")
 
-    # 输出统计结果
+    # Print the statistics.
     print("Summary Statistics:")
     print(f"Total unique target elements ({', '.join(TARGET_ELEMENTS)}): {len(all_target_elements)}")
     print(f"Target elements found: {', '.join(sorted(all_target_elements)) if all_target_elements else 'None'}")
@@ -141,25 +141,25 @@ def count_element_distribution(folder="."):
     for file in os.listdir(folder):
         if file.endswith(".cif"):
             try:
-                # 读取 CIF 文件的结构
+                # Read the crystal structure from the CIF file.
                 structure = Structure.from_file(os.path.join(folder, file))
                 composition = structure.composition
 
-                # 统计含有的目标元素种类数
+                # Count distinct target elements in the structure.
                 target_elements_in_structure = {el.symbol for el in composition.elements if el.symbol in TARGET_ELEMENTS}
-                # 统计含有的金属元素种类数
+                # Count distinct metal elements in the structure.
                 # target_elements_in_structure = {el.symbol for el in composition.elements if el.is_metal}
 
                 num_target_elements = len(target_elements_in_structure)
 
-                # 更新统计分布
+                # Update the frequency distribution.
                 target_count_distribution[num_target_elements] = target_count_distribution.get(num_target_elements, 0) + 1
                 # if num_target_elements == 0:
                 #     print(file[:-4])
             except Exception as e:
                 print(f"Error processing {file}: {e}")
 
-    # 输出统计结果
+    # Print the statistics.
     print("Distribution of structures based on the number of target elements:")
     for num_elements, count in sorted(target_count_distribution.items()):
         print(f"{num_elements}\t{count}")

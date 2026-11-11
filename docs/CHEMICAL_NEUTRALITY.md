@@ -1,21 +1,21 @@
-# 电中性筛选
+# Chemical-neutrality screening
 
-电中性判据采用论文 SI 表 S3。配置文件为 `src/resources/oxidation_states_si.json`，包括 Tl +1/+3、Pb +2/+4、S -2/+6、Se和Te -2/+4/+6、Sb +3/+5 等全部允许价态。
+Charge-screening rules follow SI Table S3. The configuration file is `src/resources/oxidation_states_si.json`, including all listed alternatives such as Tl +1/+3, Pb +2/+4, S -2/+6, Se and Te -2/+4/+6, and Sb +3/+5.
 
-`generated.neutrality` 检查允许的氧化态组合是否能使化学计量净电荷严格为零，输出：
+`generated.neutrality` checks whether an allowed oxidation-state assignment gives exactly zero stoichiometric net charge. It returns:
 
-- neutral：找到零电荷组合，并记录该组合。
-- not_neutral：允许价态范围内无法满足电中性。
-- review：含表 S3 未列元素，或需要进一步确定混合价态分配。
-- invalid：无法解析为有效化学组成。
+- neutral: a zero-charge assignment was found and is recorded.
+- not_neutral: the allowed oxidation states cannot yield zero net charge.
+- review: an element is absent from Table S3, or a mixed-valence assignment needs further examination.
+- invalid: the input cannot be parsed as a valid composition.
 
-输入为带化学式列的 UTF-8 CSV：
+The input is a UTF-8 CSV with a named formula column:
 
 ```bash
 python -m generated.neutrality input.csv neutrality.csv --formula-column formula
 ```
 
-输出保留原始行并追加判定、理由及价态组合，输出路径须为新文件。
-默认规则寻找每种元素采用一个允许价态的组合；若混合价态可能改变结论，则交由人工复核，不自动排除。
-表 S3 未列元素按 SI 逐例判断，可通过 `--states-file` 提供经过确认的扩展规则。
-电中性判定不代替结构稳定性或合成可行性判断。
+The output preserves input rows and appends the status, reason, and oxidation-state assignment. The output path must be a new file.
+The default search assigns one allowed oxidation state to each element. If mixed valence could change the conclusion, the composition is sent for review rather than automatically rejected.
+Elements absent from Table S3 require case-by-case assessment, as stated in the SI. An explicitly reviewed extension can be supplied with `--states-file`.
+Charge neutrality does not establish structural stability or synthetic accessibility.

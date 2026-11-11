@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jpcl-nlo-workflow"
+version = "0.1.0"
+description = "Companion code for the CDVAE NLO materials discovery workflow"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["CGCNN*", "predictor*", "generated*", "analysis*", "resources*"]
+
+[tool.setuptools.package-data]
+resources = ["*.json"]

@@ -1,0 +1,9 @@
+# Inferred, unpinned, untested. Install alongside the ML/materials dependencies as needed.
+matplotlib
+seaborn
+mendeleev
+smact
+ase
+seekpath
+mp-api
+jupyterlab

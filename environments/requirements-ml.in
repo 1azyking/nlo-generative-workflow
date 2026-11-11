@@ -1,0 +1,16 @@
+# Inferred from retained source imports; versions and interoperability are UNVERIFIED.
+# This is not the recovered historical environment or a lockfile.
+numpy
+scipy
+pandas
+scikit-learn
+imbalanced-learn
+lightgbm
+joblib
+torch
+pymatgen
+matminer
+alignn
+dgl
+jarvis-tools
+periodictable

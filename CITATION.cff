@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "Please cite the associated paper and the original software dependencies."
+title: "An Integrated Machine Learning Workflow Based on Deep Generative Models for Discovery of Inorganic Nonlinear Optical Crystals"
+type: article
+authors:
+  - family-names: Yu
+    given-names: Zhaoxi
+  - family-names: Wang
+    given-names: Ruixi
+  - family-names: Peng
+    given-names: Ding
+  - family-names: Shen
+    given-names: Lin
+  - family-names: Chen
+    given-names: Ling
+  - family-names: Fang
+    given-names: Wei-Hai
+doi: 10.1021/acs.jpclett.6c01026
+year: 2026
+journal: The Journal of Physical Chemistry Letters
+volume: 17
+start: 6463
+end: 6471
